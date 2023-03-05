@@ -1,9 +1,24 @@
+:root {
+  --main-top-offset: 128px;
+}
+
 .characterEditor {
-  padding-top: 128px;
+  position: relative;
+  padding-top: var(--main-top-offset);
   padding-bottom: 64px;
 }
 
-.maxWidthWrapper {
+.characterEditor::before {
+  z-index: -1;
+  content: "''";
+  display: block;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  background-color: #e5e7eb;
+  margin-top: -50vh;
 }
 
 .header {
@@ -23,8 +38,78 @@
   margin: 0;
 }
 
-.characterWrapper {
+.maxWidthWrapper {
+  max-width: 1024px;
+  display: flex;
+  flex-direction: row;
+}
+
+.controlWrapper {
+  max-width: 65%;
 }
 
 .controlColumn {
+  max-width: 65%;
+}
+
+.characterWrapper {
+  position: sticky;
+  top: 48px;
+  width: 50%;
+  height: 80vh;
+}
+
+@media (max-width: 748px) {
+  .characterEditor {
+    all: unset;
+    display: block;
+    position: relative;
+  }
+
+  .header {
+    display: none;
+  }
+
+  .maxWidthWrapper {
+    all: unset;
+    display: block;
+    position: relative;
+    height: 100vh;
+  }
+
+  .controlWrapper {
+    all: unset;
+    z-index: 1;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .controlColumn {
+    all: unset;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    position: absolute;
+    bottom: 32px;
+  }
+
+  .controlColumn > div {
+    margin-left: 16px;
+  }
+
+  .controlColumn > div:last-of-type {
+    margin-right: 16px;
+  }
+
+  .characterWrapper {
+    all: unset;
+    position: absolute;
+    bottom: 124px;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+  }
 }
